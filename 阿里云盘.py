@@ -28,7 +28,7 @@ SIGN_LOG_FILE = os.path.join(work_path, SIGN_LOG)
 logger.add(SIGN_LOG_FILE, encoding='utf8')
 
 # 请在阿里云盘网页端获取：JSON.parse(localStorage.getItem("token")).refresh_token
-refresh_token = ""
+refresh_token = os.getenv("refreshToken")
 if refresh_token is None:
     logger.error("请先在环境变量里添加阿里云盘的refresh_token")
     exit(0)

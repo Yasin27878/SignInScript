@@ -1,4 +1,4 @@
-# 来自吾爱论坛，在原作者的基础上把推送消息换成了青龙自带的通知，如有侵权请告知，将立即删除。
+# 来自吾爱论坛，在原作者的基础上把推送消息换成了青龙自带的通知，修复了脚本在青龙容器运行不会自动停止的bug，如有侵权请告知，将立即删除。
 # @author Sten
 # 我的仓库:https://github.com/aefa6/QinglongScript.git
 # 觉得不错麻烦点个star谢谢
@@ -12,7 +12,6 @@ import urllib.parse,hmac
 import rsa
 import requests
 import random
-import os
  
 BI_RM = list("0123456789abcdefghijklmnopqrstuvwxyz")
  
@@ -21,9 +20,8 @@ B64MAP = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 s = requests.Session()
  
 # 在下面两行的引号内贴上账号（仅支持手机号）和密码
-# 变量 username（手机号）,password（密码）
-username = os.getenv("ty_username")
-password = os.getenv("ty_password")
+username = ""
+password = ""
  
 _ = """
 if(username == "" or password == ""):
@@ -213,5 +211,5 @@ def handler(event, context):  # aliyun default
  
  
 if __name__ == "__main__":
-    # time.sleep(random.randint(5, 30))
     main()
+    time.sleep(random.randint(5, 30))
